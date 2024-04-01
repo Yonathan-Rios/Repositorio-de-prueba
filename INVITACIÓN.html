@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación para Melanie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .pregunta {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .respuestas {
+            display: flex;
+            justify-content: space-around;
+        }
+        .respuesta {
+            padding: 10px;
+            border: 1px solid #3b10d8;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .respuesta:hover {
+            background-color: #37eb46;
+        }
+        .nota {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #d34724;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="pregunta">Melanieee, ¿tienes algo planeado para mañana?</h1>
+    <div class="respuestas">
+        <button class="respuesta" onclick="seleccionarRespuesta('si')">SI</button>
+        <button class="respuesta" onclick="seleccionarRespuesta('no')">NO</button>
+    </div>
+    <div id="notaSi" class="nota" style="display: none;"></div>
+    <div id="notaNo" class="nota" style="display: none;"></div>
+    <script>
+        function seleccionarRespuesta(respuesta) {
+            if (respuesta === 'si') {
+                document.getElementById('notaSi').innerText = 'Te quería invitar a comer mañana, pero :( si no puedes, vamos a comer el martesss.';
+                document.getElementById('notaSi').style.display = 'block';
+            } else if (respuesta === 'no') {
+                document.querySelector('.pregunta').innerText = '¿Vamos a comer mañana cuando salgas de servicioooo?';
+                document.querySelector('.respuestas').innerHTML = `
+                    <button class="respuesta" onclick="seleccionarRespuesta('si2')">SI</button>
+                    <button class="respuesta" onclick="seleccionarRespuesta('no2')">NO</button>
+                `;
+            } else if (respuesta === 'si2') {
+                document.getElementById('notaNo').innerText = 'Por WhatsApp nos ponemos de acuerdo por la hora';
+                document.getElementById('notaNo').style.display = 'block';
+            } else if (respuesta === 'no2') {
+                alert('Error, solo puedes seleccionar la otra respuesta');
+            }
+        }
+    </script>
+</body>
+</html>
